@@ -18,6 +18,8 @@
 - [Installation & Setup](#-installation--setup)
 - [Usage](#-usage)
 - [Outputs](#-outputs)
+- [Future Work: GSM-UTCI Integration](#-future-work-gsm-utci-integration)
+- [Scalability & Transferability](#-scalability--transferability)
 - [Team](#-team)
 - [License](#-license)
 
@@ -81,13 +83,18 @@ The project produces a **clean, administrative-level zoning map** of Delhi with 
 - **Input:** 9 physical/social features (NDBI, POPULATION, NIGHTLIGHTS, COOLING_EFFECT, etc.)
 - **Performance:** R² = **0.6397**, RMSE = **1.34°C**
 
-### 3. Strategy Assignment (Universal Thresholds)
-Based purely on physical science (not HVI):
-- `LST >= 45°C` → **Cool Roofs**
-- `LST >= 42°C` → **Blue-Green Infrastructure**
-- `LST >= 38°C` → **Tree Corridors**
-- `LST >= 35°C` → **Perimeter Shading**
-- `LST < 35°C` → **Maintain Green**
+### 3. UTCI Estimation (Human‑Perceived Heat)
+
+We use an empirical approximation to convert LST to UTCI:
+UTCI = LST + 0.15 * (RH - 50) - 0.3 * WindSpeed
+
+Based purely on UTCI (not HVI):
+- `UTCI >= 45°C` → **Cool Roofs**
+- `UTCI >= 42°C` → **Blue-Green Infrastructure**
+- `UTCI >= 38°C` → **Tree Corridors**
+- `UTCI >= 35°C` → **Perimeter Shading**
+- `UTCI < 35°C` → **Maintain Green**
+
 
 ### 4. HVI Overlay (Post-hoc)
 The HVI incorporates *Poverty (MPI)* and *Population Density* to create **urgency modifiers**:
@@ -157,6 +164,55 @@ This script loads the trained XGBoost model, predicts LST for all pixels, assign
 File	                                Description
 lst_predictions_with_priority.csv	    Pixel-level predictions, strategies, and priority labels.
 delhi_priority_zoning_map_recalc.png	Final clean zoning map with 4 priority tiers.
+
+
+## 🔮 Future Work: GSM-UTCI Integration
+### We have identified the state‑of‑the‑art GSM-UTCI framework (Yi et al., 2025, arXiv:2507.23000v1) as a next‑generation upgrade.
+
+Feature	       Current Implementation	           GSM-UTCI Upgrade
+Heat Metric	   LST (estimated UTCI empirically)	    Direct UTCI prediction (human‑perceived)
+Resolution	   ~30m (Landsat)	                    1‑meter (hyperlocal)
+Accuracy	   R² = 0.64 (LST)	                    R² = 0.915, MAE = 0.41°C
+Scenario 
+Simulation	   Rule‑based	                        Simulate greening scenarios 
+Computational 
+Speed	       Fast	                                <5 minutes for an entire city
+
+
+
+## 🌍 Scalability & Transferability
+### Applying the Framework to Any City
+
+Our methodology is designed to be **city-agnostic**. While this project focuses on Delhi, the pipeline can be applied to any urban area worldwide with minimal adjustments:
+
+| Component | Data Required | Global Availability |
+| :--- | :--- | :--- |
+| **LST Prediction** | Landsat 8/9 imagery (NDVI, NDBI, ALBEDO) | ✅ Free & global (USGS) |
+| **UTCI Estimation** | LST + humidity + wind (empirical) or GSM-UTCI | ✅ ERA5 / NSRDB (global) |
+| **HVI Proxy** | Population density + nighttime lights (if no poverty data) | ✅ WorldPop + NASA (global) |
+| **Cooling Strategies** | Urban morphology + land cover | ✅ OSM (global) |
+
+### Steps to Apply to a New City
+
+1. **Collect satellite data** – Download Landsat 8/9 for the city.
+2. **Extract features** – Compute NDVI, NDBI, ALBEDO, and population density.
+3. **Predict LST** – Use our pre‑trained XGBoost model (transfer learning) or retrain it on local data.
+4. **Estimate UTCI** – Use our empirical formula, or integrate GSM-UTCI (future work).
+5. **Overlay local HVI** – Use census poverty data, or compute a proxy from nighttime lights + population.
+6. **Generate maps** – Run the same scripts to produce interactive and static maps.
+
+### Example: CNCR Cities
+
+We have already prepared population projections for the **Central NCR (CNCR) cities** (Ghaziabad, Noida, Gurugram, Faridabad, Bahadurgarh, Sonipat). By applying this framework to these rapidly urbanising satellite cities, planners can proactively mitigate heat stress before these areas reach Delhi-level density.
+
+### Global Potential
+
+With the upcoming integration of **GSM-UTCI** (a multimodal deep learning model trained on SOLWEIG-derived UTCI maps), our framework will be able to:
+- Predict **human‑perceived heat stress** at **1‑meter resolution** for any city.
+- **Simulate greening scenarios** (e.g., "what if we convert 10% of impervious surfaces to trees?").
+- Run city‑wide scenarios in **under 5 minutes** – enabling rapid, iterative planning.
+
+**This is a blueprint for climate‑responsive urban planning, not just a Delhi case study.**
 
 ## 👥 Team
 Team Name: Oasis
