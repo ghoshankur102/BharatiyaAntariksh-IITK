@@ -30,10 +30,13 @@
 Urban heat islands (UHIs) disproportionately affect low-income and vulnerable populations who lack adaptive capacity (air conditioning, green spaces, etc.). This project delivers a **spatially explicit decision-support framework** for Delhi that:
 
 1. **Predicts** Land Surface Temperature (LST) using an XGBoost model trained on physical drivers (NDVI, NDBI, Albedo, Population).
-2. **Derives** cooling strategies (Cool Roofs, Blue-Green Infrastructure, Tree Corridors) from the predicted heat.
-3. **Overlays** the Heat Vulnerability Index (HVI) to prioritize interventions based on **emergency** (high heat + high vulnerability) and **equity** (low heat but high poverty).
+2. **Estimates UTCI** (Universal Thermal Climate Index) – a human‑perceived heat stress metric that accounts for humidity, wind, and radiation.
+3. **Derives** cooling strategies (Cool Roofs, Blue-Green Infrastructure, Tree Corridors) from the predicted UTCI.
+4. **Overlays** the Heat Vulnerability Index (HVI) to prioritize interventions based on **emergency** (high heat + high vulnerability) and **equity** (low heat but high poverty).
+5. **Generates interactive and static maps** with real satellite imagery and administrative boundaries.
 
 **The Key Innovation:** By separating physical heat prediction from social vulnerability, we ensure that limited municipal resources are directed first to the communities that need them most – aligning with climate justice principles.
+
 
 ---
 
