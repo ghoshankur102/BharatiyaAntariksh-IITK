@@ -51,6 +51,7 @@ We go one step further. We keep **HVI (Heat Vulnerability Index) entirely separa
 | Approach | What It Does | Who Benefits |
 | :--- | :--- | :--- |
 | **LST Model (XGBoost)** | Predicts physical heat using satellite + OSM data. | Science-driven, universal. |
+| **UTCI Estimation** | Converts LST to human‑perceived heat (humidity + wind correction). | More relevant to human health. |
 | **HVI Overlay** | Adds Poverty (MPI) and Population Density to create a *Priority Score*. | **Vulnerable communities** (equity focus). |
 | **Final Map** | 4 Priority Tiers: IMMEDIATE, HIGH PRIORITY, EQUITY FOCUS, STANDARD. | Policymakers – tells them exactly *where* to spend first. |
 
