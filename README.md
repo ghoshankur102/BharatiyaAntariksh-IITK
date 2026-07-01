@@ -1,0 +1,10 @@
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+xgboost>=3.0.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+geopandas>=0.14.0
+shapely>=2.0.0
+rasterio>=1.3.0
+joblib>=1.2.0

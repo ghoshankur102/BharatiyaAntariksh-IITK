@@ -1,0 +1,16 @@
+Accuracy: 1.0000
+
+                           precision    recall  f1-score   support
+
+Blue-Green Infrastructure       1.00      1.00      1.00      8662
+               Cool Roofs       1.00      1.00      1.00      2766
+      Cool Roofs (equity)       1.00      1.00      1.00      1582
+          Cooling Centres       1.00      1.00      1.00       880
+          Green Corridors       1.00      1.00      1.00      5543
+           Maintain Green       1.00      1.00      1.00      5796
+        Perimeter Shading       1.00      1.00      1.00      1492
+           Tree Corridors       1.00      1.00      1.00      1429
+
+                 accuracy                           1.00     28150
+                macro avg       1.00      1.00      1.00     28150
+             weighted avg       1.00      1.00      1.00     28150
