@@ -148,35 +148,30 @@ urban-heat-mitigation-delhi/
 - Python 3.10+
 - Git (optional)
 
-### Clone the Repository
-```bash
-git clone https://github.com/yourusername/urban-heat-mitigation-delhi.git
-cd urban-heat-mitigation-delhi
-python -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
 
-🚀 Usage
+## 🚀 Usage
 Option 1: Run the Full Pipeline (Predict + Map)
 This script loads the trained XGBoost model, predicts LST for all pixels, assigns cooling strategies, overlays HVI, and generates the final priority map.
 
-📊 Outputs
+## 📊 Outputs
 File	                                Description
 lst_predictions_with_priority.csv	    Pixel-level predictions, strategies, and priority labels.
 delhi_priority_zoning_map_recalc.png	Final clean zoning map with 4 priority tiers.
 
-👥 Team
+## 👥 Team
 Team Name: Oasis
 
 Members: Ankur Ghosh, Shanya Singh, Aishik Mukherjee, Bharat Gupta
 
+Institute: IIT Kanpur
+
 Contact: ghoshankur102@gmail.com
 
-📜 License
+## 📜 License
 This project is open-source and available under the MIT License.
 
 
-🙏 Acknowledgements
+## 🙏 Acknowledgements
 Data Sources: USGS (Landsat), OSM, NFHS-5, WorldPop.
 
 Inspiration: Climate justice frameworks and Delhi Master Plan 2041.
