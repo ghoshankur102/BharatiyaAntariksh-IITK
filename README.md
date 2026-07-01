@@ -156,16 +156,12 @@ python -m venv venv
 source venv/bin/activate   # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
-## 🚀 Usage
-
-### Option 1: Run the Full Pipeline (Predict + Map)
+🚀 Usage
+Option 1: Run the Full Pipeline (Predict + Map)
 This script loads the trained XGBoost model, predicts LST for all pixels, assigns cooling strategies, overlays HVI, and generates the final priority map.
 
-```bash
-python src/xgboost_strategy_classifier.py
-
 📊 Outputs
-File	Description
+File	                                Description
 lst_predictions_with_priority.csv	    Pixel-level predictions, strategies, and priority labels.
 delhi_priority_zoning_map_recalc.png	Final clean zoning map with 4 priority tiers.
 
@@ -178,6 +174,7 @@ Contact: ghoshankur102@gmail.com
 
 📜 License
 This project is open-source and available under the MIT License.
+
 
 🙏 Acknowledgements
 Data Sources: USGS (Landsat), OSM, NFHS-5, WorldPop.
